@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../product.model';
 
 @Component({
@@ -7,11 +7,20 @@ import { Product } from '../product.model';
 })
 
 export class ProductComponent {
-  product: Product = {
-    id: '1',
-    image: 'assets/images/2020_review.webp',
-    title: '2020 Shirt',
-    price: 80000,
-    description: 'bla bla bla bla bla',
+  // since it is asking to initalize this member...
+  @Input() product: Product = {
+    id: '',
+    image: '',
+    title: '',
+    price: 0,
+    description: '',
   };
+  // or...
+  // @Input() product?: Product;
+  @Output() productClicked: EventEmitter<any> = new EventEmitter();
+
+  addToCart(): void {
+    console.log('added to cart');
+    this.productClicked.emit(this.product.id);
+  }
 }
