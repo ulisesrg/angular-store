@@ -5,31 +5,12 @@
   this is a div
 </div>
 
-
-<!-- Other more advanced examples -->
-
-<!-- <div *ngIf="title === 'Store'; then store else welcome">
-  Simple view
-</div> -->
-<!-- View or template-->
-<!-- <ng-template #store>
-  Show content
-</ng-template> 
-<ng-template #welcome>
-  Welcome
-</ng-template> -->
-
-
-<!-- <ng-template [ngIf]="isLoggedIn" [ngIfElse]="loggedOut">
-  <div>
-    Welcome back, friend.
-  </div>
-</ng-template>
-<ng-template #loggedOut>
-  <div>
-    Please friend, login.
-  </div>
-</ng-template> -->
+<div [ngSwitch]="title">
+  <p *ngSwitchCase="'ulises'">This is ulises</p>
+  <p *ngSwitchCase="'eduardo'">This is eduardo</p>
+  <p *ngSwitchCase="'roland'">This is roland</p>
+  <p *ngSwitchDefault>No match found</p>
+</div>
 
 <button (click)="addItem()">Add item</button>
 
