@@ -30,3 +30,13 @@
     Please friend, login.
   </div>
 </ng-template> -->
+
+<button (click)="addItem()">Add item</button>
+
+<p *ngIf="items.length === 0">The list is empty</p>
+<ul>
+  <li *ngFor="let name of items; index as i">
+    {{ name }} {{ i }}
+    <button (click)="removeItem(i)">Remove</button>
+  </li>
+</ul>
