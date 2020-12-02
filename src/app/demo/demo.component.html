@@ -1,0 +1,26 @@
+<router-outlet></router-outlet>
+
+<input type="text" [(ngModel)]="title" name="" id="" />
+{{ title }}
+
+<input type="text" [(ngModel)]="power" name="" id="" />
+{{ power | exponential }}
+
+<div *ngIf="title === 'ulises'">this is a div</div>
+
+<div [ngSwitch]="title">
+  <p *ngSwitchCase="'ulises'">This is ulises</p>
+  <p *ngSwitchCase="'eduardo'">This is eduardo</p>
+  <p *ngSwitchCase="'roland'">This is roland</p>
+  <p *ngSwitchDefault>No match found</p>
+</div>
+
+<button (click)="addItem()">Add item</button>
+
+<p *ngIf="items.length === 0">The list is empty</p>
+<ul>
+  <li *ngFor="let name of items; index as i">
+    {{ name }} {{ i }}
+    <button (click)="removeItem(i)">Remove</button>
+  </li>
+</ul>
