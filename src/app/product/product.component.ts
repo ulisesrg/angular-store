@@ -17,7 +17,7 @@ import { Product } from '../product.model';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent
-  implements OnChanges, OnInit, /*DoCheck,*/ OnDestroy {
+  implements /* OnChanges, */ OnInit, DoCheck, OnDestroy {
   // since it is asking to initalize this member...
   @Input() product: Product = {
     id: '',
@@ -36,17 +36,17 @@ export class ProductComponent
     console.log('1. cycle constructor');
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('2. cycle ngOnChanges', changes);
-  }
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   console.log('2. cycle ngOnChanges', changes);
+  // }
 
   ngOnInit(): void {
     console.log('3. cycle ngOnInit');
   }
 
-  // ngDoCheck(): void {
-  //   console.log('4. cycle ngDoCheck');
-  // } // Error Declaring ngDoCheck and ngOnChanges method in a class is not recommended
+  ngDoCheck(): void {
+    console.log('4. cycle ngDoCheck');
+  } // Warning Declaring ngDoCheck and ngOnChanges method in a class is not recommended
 
   ngOnDestroy(): void {
     console.log('5. cycle ngOnDestroy');

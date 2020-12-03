@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductComponent } from './product/product.component';
+// import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
-import { ProductsComponent } from './products/products.component';
+// import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { DemoComponent } from './demo/demo.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -18,9 +18,9 @@ import { CoreModule } from './core/core.module';
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent,
+    // ProductComponent,
     CartComponent,
-    ProductsComponent,
+    // ProductsComponent,
     ContactComponent,
     DemoComponent,
     PageNotFoundComponent,
