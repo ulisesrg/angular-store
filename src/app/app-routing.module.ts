@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-import { DemoComponent } from './demo/demo.component';
+// import { DemoComponent } from './demo/demo.component';
 // import { HomeComponent } from './home/home.component';
 // import { ProductsComponent } from './products/products.component';
 // import { ContactComponent } from './contact/contact.component';
@@ -21,13 +21,11 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        // component: HomeComponent,
         loadChildren: () =>
           import('./home/home.module').then((m) => m.HomeModule),
       },
       {
         path: 'products',
-        // component: ProductsComponent,
         loadChildren: () =>
           import('./products/products.module').then((m) => m.ProductsModule),
       },
@@ -37,7 +35,6 @@ const routes: Routes = [
       },
       {
         path: 'contact',
-        // component: ContactComponent,
         loadChildren: () =>
           import('./contact/contact.module').then((m) => m.ContactModule),
       },
@@ -45,7 +42,8 @@ const routes: Routes = [
   },
   {
     path: 'demo',
-    component: DemoComponent,
+    loadChildren: () =>
+      import('./demo/demo.module').then((m) => m.DemoModule),
   },
   {
     path: '**',
