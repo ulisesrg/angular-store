@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './cart/cart.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CoreModule } from './core/core.module';
 
@@ -13,7 +12,6 @@ import { CoreModule } from './core/core.module';
   declarations: [
     AppComponent,
     CartComponent,
-    PageNotFoundComponent,
     ProductDetailComponent,
   ],
   imports: [
