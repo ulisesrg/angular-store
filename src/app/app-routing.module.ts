@@ -4,7 +4,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { DemoComponent } from './demo/demo.component';
 // import { HomeComponent } from './home/home.component';
 // import { ProductsComponent } from './products/products.component';
-import { ContactComponent } from './contact/contact.component';
+// import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -37,7 +37,9 @@ const routes: Routes = [
       },
       {
         path: 'contact',
-        component: ContactComponent,
+        // component: ContactComponent,
+        loadChildren: () =>
+          import('./contact/contact.module').then((m) => m.ContactModule),
       },
     ],
   },
