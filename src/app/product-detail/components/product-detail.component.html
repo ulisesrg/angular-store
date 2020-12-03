@@ -1,10 +1,16 @@
-<div>
-  <img [src]="product.image" alt="">
-</div>
-<div>
-  <ul>
-    <li>Name: {{ product.title }}</li>
-    <li>Price: {{ product.price | currency }}</li>
-  </ul>
-  <p>{{ product.description }}</p>
-</div>
+<!-- <div *ngIf="product"> 
+  this could be a good practice to check if the product
+is defined and prevent errors 
+I'm not doing it since im initializing the product detail
+with empty data-->
+  <div>
+    <img [src]="product.image" alt="">
+  </div>
+  <div>
+    <ul>
+      <li>Name: {{ product.title }}</li>
+      <li>Price: {{ product.price | currency }}</li>
+    </ul>
+    <p>{{ product.description }}</p>
+  </div>
+<!-- </div> -->
