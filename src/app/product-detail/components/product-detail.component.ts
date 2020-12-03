@@ -28,8 +28,16 @@ export class ProductDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       const id = params.id;
       // to prevent being undefined, need to add || this.product;
-      this.product = this.productsService.getProduct(id) || this.product;
+      // this.product = this.productsService.getProduct(id) || this.product;
       // console.log(this.product);
+
+      this.fetchProduct(id);
+    });
+  }
+
+  fetchProduct(id: string): void {
+    this.productsService.getProduct(id).subscribe((product) => {
+      this.product = product;
     });
   }
 }
