@@ -8,6 +8,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
@@ -38,6 +39,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatMenuModule,
     MatSortModule,
     MatPaginatorModule,
+    MatFormFieldModule,
   ],
   exports: [
     LayoutModule,
@@ -56,6 +58,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatMenuModule,
     MatSortModule,
     MatPaginatorModule,
+    MatFormFieldModule,
   ],
 })
 export class MaterialModule {}
