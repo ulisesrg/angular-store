@@ -8,6 +8,7 @@ import { MaterialModule } from '../material/material.module';
 import { NavComponent } from './components/nav/nav.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductCreationFormComponent } from './components/product-creation-form/product-creation-form.component';
+import { ProductEditionFormComponent } from './components/product-edition-form/product-edition-form.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ProductCreationFormComponent } from './components/product-creation-form
     NavComponent,
     ProductsListComponent,
     ProductCreationFormComponent,
+    ProductEditionFormComponent,
   ],
   imports: [
     CommonModule,
