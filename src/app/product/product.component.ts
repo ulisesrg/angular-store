@@ -10,6 +10,7 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { Product } from '../product.model';
+import { CartService } from '../core/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -32,7 +33,7 @@ export class ProductComponent
 
   today = new Date();
 
-  constructor() {
+  constructor(private cartService: CartService) {
     console.log('1. cycle constructor');
   }
 
@@ -55,5 +56,6 @@ export class ProductComponent
   addToCart(): void {
     console.log('added to cart');
     this.productClicked.emit(this.product.id);
+    this.cartService.addCart(this.product);
   }
 }
