@@ -7,9 +7,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { NavComponent } from './components/nav/nav.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
+import { ProductCreationFormComponent } from './components/product-creation-form/product-creation-form.component';
 
 @NgModule({
-  declarations: [ProductFormComponent, NavComponent, ProductsListComponent],
+  declarations: [
+    ProductFormComponent,
+    NavComponent,
+    ProductsListComponent,
+    ProductCreationFormComponent,
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
