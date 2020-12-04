@@ -45,11 +45,19 @@
               id=""
             />
           </mat-form-field>
+          <div *ngIf="priceField?.errors && priceField?.dirty">
+            <mat-error *ngIf="priceField?.hasError('required')"
+              >This field is required</mat-error
+            >
+            <mat-error *ngIf="priceField?.hasError('price_invalid')"
+              >The price should be less tan 10000</mat-error
+            >
+          </div>
         </div>
       </div>
       <!-- <mat-form-field>
-      <input formControlName="image" matInput type="text" name="" id="">
-    </mat-form-field> -->
+        <input formControlName="image" matInput type="text" name="" id="">
+      </mat-form-field> -->
       <div class="row">
         <div class="col-xs">
           <mat-form-field>
@@ -67,7 +75,9 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button type="submit">Save Product</button>
+      <button [disabled]="form.invalid" mat-raised-button type="submit">
+        Save Product
+      </button>
     </mat-card-actions>
   </mat-card>
 </form>

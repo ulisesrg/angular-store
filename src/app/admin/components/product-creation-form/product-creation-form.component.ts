@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductsService } from '../../../core/services/products/products.service';
+import { MyValidators } from '../../../utils/validators';
 
 @Component({
   selector: 'app-product-creation-form',
@@ -36,9 +37,13 @@ export class ProductCreationFormComponent implements OnInit {
     this.form = this.formbuilder.group({
       id: ['', [Validators.required]],
       title: ['', [Validators.required]],
-      price: [0, [Validators.required]],
+      price: ['', [Validators.required, MyValidators.isValidPrice]],
       image: [''],
       description: ['', [Validators.required]],
     });
+  }
+
+  get priceField(): AbstractControl | null {
+    return this.form.get('price');
   }
 }
