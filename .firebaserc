@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-store-9b16c": {
+      "hosting": {
+        "angular-store": [
+          "angular-store-9b16c"
+        ]
+      }
+    }
+  }
+}
