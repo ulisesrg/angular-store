@@ -4,7 +4,7 @@ import { ProductsContainer } from './containers/products.container';
 import { ProductComponent } from '../product/components/product/product.component';
 
 import { ProductsRoutingModule } from './products-routing.module';
-import { MaterialModule } from '../../material/material.module';
+import { MaterialModule } from '@material/material.module';
 
 @NgModule({
   declarations: [ProductsContainer, ProductComponent],
