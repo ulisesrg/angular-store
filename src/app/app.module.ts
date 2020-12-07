@@ -12,6 +12,27 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import * as Sentry from '@sentry/angular';
+import { Integrations } from '@sentry/tracing';
+
+// to test it only in production
+// if (environment.production) {
+Sentry.init({
+  dsn:
+    'https://c947432fb61c4ea898869ad54faca1c6@o488151.ingest.sentry.io/5547982',
+  integrations: [
+    new Integrations.BrowserTracing({
+      tracingOrigins: ['localhost', 'https://yourserver.io/api'],
+      routingInstrumentation: Sentry.routingInstrumentation,
+    }),
+  ],
+
+  // We recommend adjusting this value in production, or using tracesSampler
+  // for finer control
+  tracesSampleRate: 1.0,
+});
+// }
+
 @NgModule({
   declarations: [AppComponent],
   imports: [

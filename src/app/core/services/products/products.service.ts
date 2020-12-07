@@ -4,6 +4,7 @@ import { Product } from '@core/models/product.model';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
+import * as Sentry from '@sentry/angular';
 
 interface User {
   email: string;
@@ -106,6 +107,7 @@ export class ProductsService {
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.log(error);
+    Sentry.captureException(error);
     return throwError('something went wrong');
   }
 }
