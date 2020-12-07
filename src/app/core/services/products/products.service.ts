@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Product } from '@core/models/product.model';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 
 interface User {
@@ -68,31 +68,44 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${environment.url_api}/products`);
+    return this.http
+      .get<Product[]>(`${environment.url_api}/products`)
+      .pipe(catchError(this.handleError));
   }
 
   getProduct(id: string): Observable<Product> {
-    return this.http.get<Product>(`${environment.url_api}/products/${id}`);
+    return this.http
+      .get<Product>(`${environment.url_api}/products/${id}`)
+      .pipe(catchError(this.handleError));
   }
 
   createProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(`${environment.url_api}/products`, product);
+    return this.http
+      .post<Product>(`${environment.url_api}/products`, product)
+      .pipe(catchError(this.handleError));
   }
 
   updateProduct(id: string, changes: Partial<Product>): Observable<Product> {
-    return this.http.put<Product>(
-      `${environment.url_api}/products/${id}`,
-      changes
-    );
+    return this.http
+      .put<Product>(`${environment.url_api}/products/${id}`, changes)
+      .pipe(catchError(this.handleError));
   }
 
   deleteProduct(id: string): Observable<Product> {
-    return this.http.delete<Product>(`${environment.url_api}/products/${id}`);
+    return this.http
+      .delete<Product>(`${environment.url_api}/products/${id}`)
+      .pipe(catchError(this.handleError));
   }
 
   getRandomUsers(): Observable<User[]> {
-    return this.http
-      .get('https://randomuser.me/api/?results=2')
-      .pipe(map((response: any) => response.results as User[]));
+    return this.http.get('https://randomuserERRRRRORRR.me/api/?results=2').pipe(
+      catchError(this.handleError),
+      map((response: any) => response.results as User[])
+    );
+  }
+
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    console.log(error);
+    return throwError('something went wrong');
   }
 }
