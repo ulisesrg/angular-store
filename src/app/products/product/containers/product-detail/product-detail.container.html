@@ -1,8 +1,4 @@
-<!-- <div *ngIf="product"> 
-  this could be a good practice to check if the product
-is defined and prevent errors 
-I'm not doing it since im initializing the product detail
-with empty data-->
+<div *ngIf="(product$ | async) as product"> 
   <div>
     <img [src]="product.image" alt="">
   </div>
@@ -16,4 +12,4 @@ with empty data-->
   <button (click)="createProduct()">Create</button>
   <button (click)="updateProduct()">Update</button>
   <button (click)="deleteProduct()">Delete</button>
-<!-- </div> -->
+</div>

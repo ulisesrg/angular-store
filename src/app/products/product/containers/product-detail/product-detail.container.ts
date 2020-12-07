@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Product } from '@core/models/product.model';
-import { ProductsService } from '../../../../core/services/products/products.service';
+import { ProductsService } from '@core/services/products/products.service';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,13 +12,14 @@ import { ProductsService } from '../../../../core/services/products/products.ser
 })
 // tslint:disable-next-line: component-class-suffix
 export class ProductDetailContainer implements OnInit {
-  product: Product = {
-    id: '',
-    image: '',
-    title: '',
-    price: 0,
-    description: '',
-  };
+  // product$: Observable<Product> = {
+  //   id: '',
+  //   image: '',
+  //   title: '',
+  //   price: 0,
+  //   description: '',
+  // };
+  product$: Observable<Product> = new Observable<Product>();
 
   constructor(
     private route: ActivatedRoute,
@@ -24,21 +27,29 @@ export class ProductDetailContainer implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      const id = params.id;
-      // to prevent being undefined, need to add || this.product;
-      // this.product = this.productsService.getProduct(id) || this.product;
-      // console.log(this.product);
+    this.product$ = this.route.params.pipe(
+      switchMap((params) => {
+        return this.productsService.getProduct(params.id);
+      })
+    );
 
-      this.fetchProduct(id);
-    });
+    // Before:
+    // .subscribe((params: Params) => {
+    // const id = params.id;
+    // to prevent being undefined, need to add || this.product;
+    // this.product = this.productsService.getProduct(id) || this.product;
+    // console.log(this.product);
+
+    // this.fetchProduct(id);
+    // })
   }
 
-  fetchProduct(id: string): void {
-    this.productsService.getProduct(id).subscribe((product) => {
-      this.product = product;
-    });
-  }
+  // Before:
+  // fetchProduct(id: string): void {
+  //   this.productsService.getProduct(id).subscribe((product) => {
+  //     this.product = product;
+  //   });
+  // }
 
   createProduct(): void {
     const newProduct: Product = {
