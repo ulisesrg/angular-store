@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Product } from '@core/models/product.model';
 import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, retry } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import * as Sentry from '@sentry/angular';
 
@@ -99,7 +99,8 @@ export class ProductsService {
   }
 
   getRandomUsers(): Observable<User[]> {
-    return this.http.get('https://randomuserERRRRRORRR.me/api/?results=2').pipe(
+    return this.http.get('https://ERRORrandomuser.me/api/?results=2').pipe(
+      retry(3),
       catchError(this.handleError),
       map((response: any) => response.results as User[])
     );
@@ -109,5 +110,9 @@ export class ProductsService {
     console.log(error);
     Sentry.captureException(error);
     return throwError('something went wrong');
+  }
+
+  getFile(): Observable<any> {
+    return this.http.get('assets/files/test.txt', { responseType: 'text' });
   }
 }
