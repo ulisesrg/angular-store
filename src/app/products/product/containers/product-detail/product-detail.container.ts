@@ -81,4 +81,10 @@ export class ProductDetailContainer implements OnInit {
       console.log(response);
     });
   }
+
+  getRandomUsers() {
+    this.productsService.getRandomUsers().subscribe((users) => {
+      console.log(users);
+    });
+  }
 }
